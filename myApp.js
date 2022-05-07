@@ -1,4 +1,5 @@
 let express = require('express');
+const req = require('express/lib/request');
 let app = express();
 
 let absolutePath = __dirname + "/views/index.html"
@@ -18,10 +19,8 @@ app.use(express.static(__dirname + "/public"));
 app.use("/public", express.static(__dirname + "/public"));
 
 app.get("/json", (req, res) => {
-    res.json({
-      message: "Hello json"
-    });
-  });
+    res.json({"message": "Hello json"})
+});
 
 
 
