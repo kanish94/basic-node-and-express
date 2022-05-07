@@ -11,6 +11,11 @@ let absolutePath = __dirname + "/views/index.html"
 //     res.send("Hello Express");
 // })
 
+app.use((req, res, next) => {
+    console.log(req.method, req.path, "-", req.ip)
+    next();
+})
+
 app.get("/", (req, res) => {
     res.sendFile(absolutePath)
 })
@@ -28,6 +33,7 @@ app.get("/json", (req, res) => {
         res.json({ "message": "Hello json" })
     }
 });
+
 
 
 
