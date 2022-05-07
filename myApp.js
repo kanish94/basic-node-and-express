@@ -45,6 +45,13 @@ app.get("/:word/echo", (req, res) => {
     res.json({echo: req.params.word})
 })
 
+// Get Query Parameter Input from the Client
+// The first and last name parameters should be encoded in a query string e.g. ?first=firstname&last=lastname
+app.route("/name").get((req, res) => {
+    res.json({name: `${req.query.first} ${req.query.last}`})
+}).post((req, res) => {
+    console.log(req.query.first)
+})
 
 
 
