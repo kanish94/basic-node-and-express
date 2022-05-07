@@ -1,6 +1,8 @@
 let express = require('express');
 const req = require('express/lib/request');
 const dotenv = require('dotenv').config()
+let bodyParser = require('body-parser')
+
 let app = express();
 
 let uppercaseMessage = "Hello json".toUpperCase()
@@ -10,6 +12,9 @@ let absolutePath = __dirname + "/views/index.html"
 // app.get("/", (req, res) => {
 //     res.send("Hello Express");
 // })
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.use((req, res, next) => {
     console.log(req.method, req.path, "-", req.ip)
